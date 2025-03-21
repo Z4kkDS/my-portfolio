@@ -7,7 +7,7 @@ import Projects from "./components/Projects/Projects";
 import Skills from "./components/Skills/Skills";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
-import ScrollToTop from "./components/ScrollToTop/ScrollToTop"; // Asegúrate de que esta línea esté presente
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop"; 
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
         </section>
       </main>
       <Footer />
-      <ScrollToTop /> {/* Asegúrate de que el componente esté aquí */}
+      <ScrollToTop /> 
     </div>
   );
 }

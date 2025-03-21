@@ -1,0 +1,32 @@
+{
+  "short_name": "ZDK.DEV",
+  "name": "Diego Sáez Portfolio",
+  "description": "Portfolio profesional de Diego Sáez, Analista Programador",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#556052",
+  "background_color": "#F4F6F4",
+  "orientation": "portrait",
+  "categories": ["portfolio", "web development", "frontend"],
+  "lang": "es-ES",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "scope": "/",
+  "screenshots": [
+    {
+      "src": "images/screenshot.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Portfolio de Diego Sáez"
+    }
+  ]
+}
