@@ -6,14 +6,12 @@ function Skills() {
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   
-  // Colores estandarizados de la paleta - solo usaremos dos tonos principales
   const skillColors = {
-    primary: "#556052", // Verde militar principal para todos los iconos
-    accent: "#A3B18A",  // Verde salvia suave para hover
-    dark: "#414833",    // Reservado para modo oscuro si es necesario
+    primary: "#556052",
+    accent: "#A3B18A", 
+    dark: "#414833",   
   };
   
-  // Definición de las categorías de habilidades con colores estandarizados
   const skillCategories = [
     {
       id: 'frontend',
@@ -64,7 +62,6 @@ function Skills() {
   ];
 
   useEffect(() => {
-    // Configurar intersection observer para detectar cuando la sección es visible
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {

@@ -5,28 +5,28 @@ function SkillCard({ category, isVisible, delay }) {
   const cardRef = useRef(null);
   const skillsRef = useRef([]);
 
-  // Inicializar arreglo de referencias para habilidades
+  
   useEffect(() => {
     skillsRef.current = skillsRef.current.slice(0, category.skills.length);
   }, [category.skills.length]);
 
-  // Aplicar animación cuando la tarjeta sea visible
+  
   useEffect(() => {
     if (!isVisible || !cardRef.current) return;
 
     const timer = setTimeout(() => {
-      // Añadir clase para animar la tarjeta
+      
       cardRef.current.classList.add('card-visible');
       
-      // Animar cada habilidad con retraso escalonado
+      
       skillsRef.current.forEach((skill, index) => {
         if (!skill) return;
         
         setTimeout(() => {
           skill.classList.add('skill-visible');
-        }, 100 * (index + 1)); // Retraso escalonado
+        }, 100 * (index + 1)); 
       });
-    }, delay); // Retraso basado en la posición de la categoría
+    }, delay); 
 
     return () => clearTimeout(timer);
   }, [isVisible, delay]);

@@ -1,7 +1,6 @@
 import React, { forwardRef } from 'react';
 import './Projects.css';
 
-// Tech stack logo mapping
 const techLogos = {
   "HTML": "fab fa-html5",
   "CSS": "fab fa-css3-alt",
@@ -21,11 +20,9 @@ const techLogos = {
   "TypeScript": "fab fa-js",
   "Express": "fas fa-server",
   "Next.js": "fas fa-fast-forward",
-  "TailwindCSS": "fab fa-css3",
-  // Add more mappings as needed
+  "TailwindCSS": "fab fa-css3"
 };
 
-// Colores para los iconos de tecnologías
 const techColors = {
   "HTML": "#E34F26",
   "CSS": "#1572B6",
@@ -41,12 +38,10 @@ const techColors = {
   "MongoDB": "#47A248",
   "MySQL": "#4479A1",
   "Docker": "#2496ED",
-  "TypeScript": "#3178C6",
-  // Add more colors as needed
+  "TypeScript": "#3178C6"
 };
 
 const ProjectCard = forwardRef(({ project }, ref) => {
-  // Función para manejar errores de carga de imagen
   const handleImageError = (e) => {
     e.target.src = `${process.env.PUBLIC_URL}/images/projects/placeholder.jpg`;
   };
@@ -62,7 +57,7 @@ const ProjectCard = forwardRef(({ project }, ref) => {
           alt={project.title} 
           className="project-image" 
           onError={handleImageError}
-          loading="lazy" // Mejora de rendimiento con lazy loading
+          loading="lazy"
         />
       </div>
       
@@ -70,7 +65,6 @@ const ProjectCard = forwardRef(({ project }, ref) => {
         <div>
           <h3 className="project-title">{project.title}</h3>
           
-          {/* Badges de tecnologías - ahora con más visibilidad */}
           <div className="tech-badges-container">
             {project.technologies.map(tech => (
               <span key={tech} className="tech-badge" title={tech}>

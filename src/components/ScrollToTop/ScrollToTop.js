@@ -11,7 +11,7 @@ function ScrollToTop() {
     };
 
     window.addEventListener('scroll', toggleVisibility);
-    toggleVisibility(); // Verificar visibilidad inicial
+    toggleVisibility(); 
 
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);

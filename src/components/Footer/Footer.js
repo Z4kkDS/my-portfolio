@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import './Footer.css';
-import Logo from '../Logo/Logo'; // Importamos el componente Logo
+import Logo from '../Logo/Logo'; 
 
 function Footer() {
   const currentYear = new Date().getFullYear();
   const footerRef = useRef(null);
   
-  // Social media links con URLs actualizadas
+
   const socialLinks = [
     {
       id: 1,
@@ -28,7 +28,7 @@ function Footer() {
     }
   ];
 
-  // Animación de entrada para el footer
+  
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {

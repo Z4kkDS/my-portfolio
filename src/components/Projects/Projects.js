@@ -3,18 +3,12 @@ import './Projects.css';
 import ProjectCard from './ProjectCard';
 
 function Projects() {
-  // Reference for the section container
   const sectionRef = useRef(null);
-  // Referencias para proyectos (se poblarán dinámicamente)
   const projectsRef = useRef([]);
-  // Estado para filtrar proyectos - inicializado en "featured"
   const [activeFilter, setActiveFilter] = useState('featured');
-  // Estado para controlar animación cuando se cambia de filtro
   const [isChangingFilter, setIsChangingFilter] = useState(false);
-  // Estado para controlar si los proyectos están cargados inicialmente
   const [isInitiallyLoaded, setIsInitiallyLoaded] = useState(false);
 
-  // Sample project data - replace with your actual projects
   const projects = [
     {
       id: 1,
@@ -27,8 +21,6 @@ function Projects() {
       category: "frontend",
       featured: true
     },
-    // Aquí puedes agregar más proyectos
-   
     
     {
       id: 2,
@@ -55,14 +47,12 @@ function Projects() {
     }
   ];
 
-  // Filtros simplificados: solo destacados, frontend y backend
   const filters = [
     { id: 'featured', label: 'Destacados', icon: 'fas fa-star' },
     { id: 'frontend', label: 'Frontend', icon: 'fas fa-laptop-code' },
     { id: 'backend', label: 'Backend', icon: 'fas fa-server' }
   ];
   
-  // Proyectos filtrados
   const filteredProjects = (() => {
     switch (activeFilter) {
       case 'featured':
@@ -76,32 +66,26 @@ function Projects() {
     }
   })();
 
-  // Manejador para cambio de filtro con animación
   const handleFilterChange = (category) => {
     if (category === activeFilter) return;
     
     setIsChangingFilter(true);
     
-    // Breve retraso para permitir animación de salida
     setTimeout(() => {
       setActiveFilter(category);
       setIsChangingFilter(false);
     }, 300);
   };
 
-  // Inicializar la matriz de referencias al montar o cuando cambia la cantidad de proyectos
   useEffect(() => {
     projectsRef.current = new Array(filteredProjects.length);
   }, [filteredProjects.length]);
   
-  // Efecto para cargar los proyectos destacados automáticamente al inicio
   useEffect(() => {
-    // Cargar los proyectos después de un breve tiempo para dar tiempo al DOM a inicializarse
     const timer = setTimeout(() => {
       if (!isInitiallyLoaded) {
         setIsInitiallyLoaded(true);
         
-        // Aplicar fade-in al contenedor principal si no lo tiene ya
         if (sectionRef.current && !sectionRef.current.classList.contains('fade-in')) {
           sectionRef.current.classList.add('fade-in');
         }
@@ -111,7 +95,6 @@ function Projects() {
     return () => clearTimeout(timer);
   }, [isInitiallyLoaded]);
   
-  // Configurar intersection observer para las animaciones
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -124,22 +107,18 @@ function Projects() {
       { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
     );
 
-    // Esperar a que el DOM se actualice antes de observar los proyectos
     const timer = setTimeout(() => {
-      // Aplicar fade-in al contenedor principal
       if (sectionRef.current) {
         observer.observe(sectionRef.current);
       }
       
-      // Observar cada proyecto con retraso progresivo
       projectsRef.current.forEach((project, index) => {
         if (project) {
-          // Aseguramos que cualquier animación previa se elimina
           project.classList.remove('fade-in');
           
           setTimeout(() => {
             observer.observe(project);
-          }, index * 200); // Retraso progresivo para efecto cascada
+          }, index * 200);
         }
       });
     }, 100);
@@ -148,7 +127,7 @@ function Projects() {
       clearTimeout(timer);
       observer.disconnect();
     };
-  }, [filteredProjects, isInitiallyLoaded]); // Añadido isInitiallyLoaded como dependencia
+  }, [filteredProjects, isInitiallyLoaded]);
 
   return (
     <section id="projects" className="projects-container" ref={sectionRef}>

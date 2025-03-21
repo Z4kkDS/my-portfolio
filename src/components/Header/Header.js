@@ -16,10 +16,10 @@ function Header() {
     { id: 'contact', label: 'Contacto' }
   ], []);
 
-  // Detección de scroll para cambiar el header
+  
   useEffect(() => {
     const handleScroll = () => {
-      // Usamos un umbral para evitar el "temblor" en animaciones de scroll
+     
       const scrollThreshold = 20;
       const shouldHaveScrolled = window.scrollY > scrollThreshold;
       
@@ -27,7 +27,6 @@ function Header() {
         setHasScrolled(shouldHaveScrolled);
       }
       
-      // Detección de sección activa
       const sections = navItems.map(item => {
         const element = document.getElementById(item.id);
         if (!element) return { id: item.id, top: 0, height: 0 };

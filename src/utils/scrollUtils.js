@@ -1,7 +1,7 @@
 export const scrollToSection = (sectionId) => {
   const element = document.getElementById(sectionId);
   if (element) {
-    const headerOffset = 80; // Altura del header
+    const headerOffset = 80; 
     const elementPosition = element.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 

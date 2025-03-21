@@ -68,14 +68,15 @@
   transition: color 0.5s ease;
 }
 
-/* Actualizar solo la sección de botones */
+
 .hero-buttons {
   display: flex;
   gap: 1.2rem;
+  flex-wrap: wrap;
 }
 
 .btn {
-  padding: 0.8rem 1.8rem;
+  padding: 0.8rem 1.5rem;
   border-radius: 50px;
   font-weight: 600;
   text-decoration: none;
@@ -83,18 +84,22 @@
   background: transparent;
   border: 2px solid var(--primary-color);
   color: var(--text-color);
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
+  white-space: nowrap;
+  min-width: auto;
+  max-width: none;
 }
 
-/* Actualizar los estilos de los iconos en los botones */
+
 .btn i {
   font-size: 1.1rem;
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Efectos hover específicos para cada botón */
+
 .btn-primary:hover i {
   transform: translateY(-2px) rotate(10deg);
 }
@@ -116,7 +121,7 @@
 
 .btn-primary:hover {
   background: color-mix(in srgb, var(--primary-color) 85%, black);
-  color: #fff; /* Mantener el texto blanco en hover */
+  color: #fff; 
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(var(--primary-color-rgb), 0.2);
 }
@@ -135,12 +140,12 @@
   border-color: var(--primary-color);
 }
 
-/* Eliminar efectos de brillo anteriores y mantener solo transiciones suaves */
+
 .btn::before {
   display: none;
 }
 
-/* Imagen */
+
 .hero-image {
   flex: 1;
   display: flex;
@@ -183,27 +188,26 @@
   box-shadow: 0 10px 30px var(--shadow-color);
   border: 5px solid var(--border-color);
   transition: all 0.5s ease;
-  cursor: pointer; /* Indicar que es clickeable */
+  cursor: pointer; 
   animation: float 6s ease-in-out infinite;
 }
 
-/* Estilos específicos para cada modo */
+
 .profile-image.avatar {
   filter: grayscale(20%);
 }
 
 .profile-image.professional {
-  filter: none; /* Sin filtro en modo profesional */
+  filter: none; 
 }
 
-/* Detener la animación al hover para no competir con el efecto de hover */
 .profile-image:hover {
   animation: none;
   transform: scale(1.05);
   box-shadow: 0 15px 35px rgba(122, 91, 197, 0.2);
 }
 
-/* Ajuste para dispositivos móviles */
+
 @media (max-width: 768px) {
   .hero-container {
     flex-direction: column-reverse;
@@ -220,20 +224,33 @@
   }
 
   .hero-buttons {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    justify-content: center;
+    gap: 0.8rem;
   }
 
   .btn {
-    width: 100%;
-    max-width: 250px;
-    text-align: center;
-    justify-content: center;
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+    width: auto;
+    min-width: 120px;
+    max-width: none;
   }
 
   .profile-image {
     width: 200px;
     height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .btn {
+    width: 100%;
+    max-width: 200px;
   }
 }

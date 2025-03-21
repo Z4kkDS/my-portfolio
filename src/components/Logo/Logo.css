@@ -3,9 +3,8 @@
   transition: all 0.3s ease;
 }
 
-/* Tamaños del logo */
 .logo-container.small {
-  width: auto; /* Cambiamos a auto para permitir que el texto se ajuste */
+  width: auto; 
 }
 
 .logo-container.medium {
@@ -16,42 +15,40 @@
   width: auto;
 }
 
-/* Wrapper para logo + texto */
+
 .logo-wrapper {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-/* Ajustar tamaño del logo */
+
 .logo-svg {
-  width: 45px; /* Logo ligeramente más grande (era 40px) */
+  width: 45px; 
   height: auto;
   transition: all 0.3s ease;
 }
 
-/* Estilos para el header scrolled */
-.scrolled .logo-svg {
-  width: 35px; /* Ajustado proporcionalmente (era 32px) */
-}
 
-/* Estilos de texto del logo */
+
+
+
 .logo-text {
   display: flex;
   align-items: center;
   font-weight: 700;
-  font-family: 'Fira Code', 'Source Code Pro', monospace; /* Fuente tipo código */
-  letter-spacing: 0; /* Eliminar letter-spacing negativo */
-  font-size: 1.5rem; /* Texto ligeramente más grande (era 1.4rem) */
+  font-family: 'Fira Code', 'Source Code Pro', monospace; 
+  letter-spacing: 0; 
+  font-size: 1.5rem; 
   transition: all 0.3s ease;
   position: relative;
 }
 
 .scrolled .logo-text {
-  font-size: 1.3rem; /* Ajustado proporcionalmente (era 1.2rem) */
+  font-size: 1.3rem; 
 }
 
-/* Agregar símbolos de etiqueta */
+
 .logo-text::before {
   content: "<";
   color: var(--secondary-color);
@@ -66,7 +63,7 @@
   margin-left: 1px;
 }
 
-/* Ajustar espaciado para conseguir apariencia de código */
+
 .logo-text-main {
   color: var(--text-color);
   margin-right: 0;
@@ -74,8 +71,8 @@
 
 .logo-text-dot {
   color: var(--primary-color);
-  margin: 0; /* Eliminar márgenes para tener espaciado consistente */
-  position: relative; /* Mantener para mejor control durante animaciones */
+  margin: 0; 
+  position: relative; 
 }
 
 .logo-text-dev {
@@ -83,15 +80,15 @@
   margin-left: 0;
 }
 
-/* Seleccionar elementos del SVG por su id o clase y aplicar colores según el tema */
+
 .logo-svg path,
 .logo-svg rect,
 .logo-svg circle,
 .logo-svg polygon {
-  fill: var(--text-color); /* Color por defecto, se adaptará al tema */
+  fill: var(--text-color); 
 }
 
-/* Puedes seleccionar elementos específicos de tu SVG */
+
 .logo-svg .primary-element {
   fill: var(--primary-color);
 }
@@ -100,7 +97,6 @@
   fill: var(--accent-color, #A3B18A);
 }
 
-/* Efectos hover */
 .logo-container:hover .logo-svg {
   transform: rotate(-5deg) scale(1.05);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -118,7 +114,7 @@
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Actualizar efectos hover */
+
 .logo-container:hover .logo-text::before,
 .logo-container:hover .logo-text::after {
   color: var(--primary-color);
@@ -127,7 +123,7 @@
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Animación para cargar el logo */
+
 @keyframes logoEnter {
   0% {
     opacity: 0;
@@ -158,7 +154,7 @@
   animation-delay: 0.3s;
 }
 
-/* Agregar animación al hacer clic */
+
 .logo-container:active .logo-svg {
   transform: scale(0.9);
   transition: transform 0.2s ease;
@@ -169,10 +165,10 @@
   transition: transform 0.2s ease;
 }
 
-/* Sutil animación constante para el punto */
+
 @keyframes pulseDot {
   0% { transform: scale(1); }
-  50% { transform: scale(1.05); } /* Reducir la escala máxima */
+  50% { transform: scale(1.05); } 
   100% { transform: scale(1); }
 }
 
@@ -180,7 +176,7 @@
   animation: pulseDot 3s infinite ease-in-out;
 }
 
-/* Mejorar transiciones */
+
 .logo-svg, 
 .logo-text, 
 .logo-text-main, 
@@ -189,35 +185,35 @@
   transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-/* Refinamiento de tamaños para diferentes variantes */
+
 .logo-container.small .logo-svg {
-  width: 34px; /* Era 30px */
+  width: 34px; 
 }
 
 .logo-container.large .logo-svg {
-  width: 54px; /* Era 48px */
+  width: 54px; 
 }
 
 .logo-container.small .logo-text {
-  font-size: 1.3rem; /* Era 1.2rem */
+  font-size: 1.3rem; 
 }
 
 .logo-container.large .logo-text {
-  font-size: 1.7rem; /* Era 1.6rem */
+  font-size: 1.7rem; 
 }
 
-/* Responsive */
+
 @media (max-width: 480px) {
   .logo-svg {
-    width: 32px; /* Era 28px */
+    width: 32px; 
   }
   
   .logo-text {
-    font-size: 1.2rem; /* Era 1.1rem */
+    font-size: 1.2rem; 
   }
   
   .scrolled .logo-text {
-    font-size: 1.1rem; /* Era 1rem */
+    font-size: 1.1rem; 
   }
   
   .logo-wrapper {

@@ -1,4 +1,3 @@
-\src\App.css */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,17 +5,16 @@
 }
 
 :root {
-  /* Variables mejoradas para el tema claro */
   --background-color: #F4F6F4;
   --text-color: #1A1D1A;
-  --primary-color: #4A5447; /* Verde militar más oscuro para mejor contraste */
+  --primary-color: #4A5447;
   --secondary-color: #5B635A;
   --card-background: #FFFFFF;
-  --shadow-color: rgba(74, 84, 71, 0.08); /* Sombra basada en primary-color */
+  --shadow-color: rgba(74, 84, 71, 0.08);
   --border-color: #E8EBE8;
-  --accent-color: #6B7A65; /* Acento verde más oscuro */
+  --accent-color: #6B7A65;
   --text-contrast: #121512;
-  --link-hover: #3D463B; /* Color hover más oscuro */
+  --link-hover: #3D463B;
   --soft-gradient: linear-gradient(120deg, 
     rgba(74, 84, 71, 0.95), 
     rgba(107, 122, 101, 0.95)
@@ -40,7 +38,6 @@ body {
   transition: background-color var(--theme-transition-duration) var(--theme-transition-timing);
 }
 
-/* Añadir transición suave para el cambio de tema */
 body.theme-transition,
 body.theme-transition *:not([class*="hero"]) {
   transition: background-color var(--theme-transition-duration) var(--theme-transition-timing),
@@ -53,29 +50,29 @@ body.theme-transition *:not([class*="hero"]) {
 body.dark-mode {
   --background-color: #161716;
   --text-color: #ECECEC;
-  --primary-color: #778472; /* Verde militar más claro */
+  --primary-color: #778472;
   --secondary-color: #A0A0A0;
   --card-background: #232423;
   --shadow-color: rgba(0, 0, 0, 0.28);
   --border-color: #303230;
-  --accent-color: #94A28C; /* Acento verde para modo oscuro */
+  --accent-color: #94A28C;
   --text-contrast: #F0F0F0;
   --soft-gradient: linear-gradient(120deg, var(--primary-color), var(--accent-color));
-  --primary-color-rgb: 119, 132, 114; /* RGB del color primario para modo oscuro */
+  --primary-color-rgb: 119, 132, 114;
   transition: all var(--theme-transition-duration) var(--theme-transition-timing);
 }
 
 .App {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Asegura que la app llene al menos la altura de la ventana */
+  min-height: 100vh;
   background-color: var(--background-color);
   color: var(--text-color);
   transition: background-color var(--theme-transition-duration) var(--theme-transition-timing);
 }
 
 main {
-  flex: 1; /* Hace que el contenido principal ocupe todo el espacio disponible */
+  flex: 1;
 }
 
 section {
@@ -90,7 +87,6 @@ section {
   }
 }
 
-/* Esto ayudará a que el footer siempre esté en la parte inferior */
 a {
   transition: color 0.2s ease;
 }
@@ -99,7 +95,6 @@ a:hover {
   color: var(--link-hover);
 }
 
-/* Efecto para el header cuando se hace scroll */
 .header.scrolled {
   padding: 0.7rem 2rem;
   box-shadow: 0 3px 20px rgba(74, 84, 71, 0.1);

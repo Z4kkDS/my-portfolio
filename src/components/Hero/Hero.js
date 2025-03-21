@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import './Hero.css';
 
 function Hero() {
-  // Estado para controlar el tema y la imagen
+  
   const [isProfessionalMode, setIsProfessionalMode] = useState(false);
   
-  // Función para alternar entre modos
+  
   const toggleMode = () => {
     setIsProfessionalMode(!isProfessionalMode);
-    // Aplicar el tema al body para afectar a toda la aplicación
+    
     document.body.classList.toggle('dark-mode');
   };
 
-  // Usar rutas absolutas desde la carpeta public
+  
   const avatarImage = `${process.env.PUBLIC_URL}/images/avatar.png`;
   const professionalImage = `${process.env.PUBLIC_URL}/images/professional.png`;
 
@@ -34,7 +34,7 @@ function Hero() {
             className="btn btn-cv"
             target="_blank"
             rel="noopener noreferrer"
-            download="Diego_Saez_CV.pdf"  // Añade el atributo download con el nombre que quieras
+            download="Diego_Saez_CV.pdf" 
           >
             <i className="fas fa-file-download"></i> Descargar CV
           </a>
