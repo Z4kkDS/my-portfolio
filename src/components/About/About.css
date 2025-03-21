@@ -1,16 +1,4 @@
-/**
- * ABOUT SECTION STYLES
- * 
- * Este archivo contiene los estilos para el componente About del portafolio.
- * Organizado en secciones lógicas para facilitar el mantenimiento.
- */
-
-/**
- * Contenedor principal y animación de entrada
- * ------------------------------------------
- * Maneja el diseño general de la sección y las animaciones de carga
- */
- .about-container {
+.about-container {
     padding: 4rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -24,15 +12,10 @@
     transform: translateY(0);
 }
 
-/**
- * Título de sección
- * ----------------
- * Estilos para el encabezado principal con línea decorativa
- */
 .section-title {
     font-size: 2.5rem;
     text-align: center;
-    margin-bottom: 3.5rem; /* Aumentado de 3rem a 3.5rem para más espacio */
+    margin-bottom: 3.5rem;
     color: var(--primary-color);
     position: relative;
     transition: color 0.5s ease;
@@ -44,7 +27,7 @@
     width: 100px;
     height: 4px;
     background-color: var(--primary-color);
-    bottom: -15px; /* Aumentado de -10px a -15px para bajar el decorador */
+    bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 2px;
@@ -55,16 +38,11 @@
     width: 150px;
 }
 
-/**
- * Distribución de tarjetas
- * -----------------------
- * Sistema de grid para organizar las tarjetas About
- */
 .about-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.75rem;
-    margin-top: 1.5rem; /* Añadido para aumentar el espacio entre título y tarjetas */
+    margin-top: 1.5rem;
     margin-bottom: 3rem;
     padding: 0.5rem;
 }
@@ -79,11 +57,6 @@
     }
 }
 
-/**
- * Estructura base de tarjetas
- * --------------------------
- * Diseño y estructura fundamental de cada tarjeta
- */
 .about-card {
     height: auto;
     display: flex;
@@ -107,7 +80,6 @@
     transform: translateY(0);
 }
 
-/* Variantes sutiles para alternar tarjetas */
 .about-card:nth-child(even) {
     background-color: var(--card-background);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -118,18 +90,12 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
-/**
- * Efectos interactivos de tarjetas
- * -------------------------------
- * Animaciones y efectos visuales al interactuar con las tarjetas
- */
 .about-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 40px var(--shadow-color);
     border-color: var(--primary-color);
 }
 
-/* Efecto de borde superior con gradiente */
 .about-card:before {
     content: '';
     position: absolute;
@@ -143,7 +109,6 @@
     transition: opacity 0.4s ease;
 }
 
-/* Efecto de brillo radial interno */
 .about-card::after {
     content: '';
     position: absolute;
@@ -157,17 +122,11 @@
     z-index: -1;
 }
 
-/* Activar efectos al hover */
 .about-card:hover:before,
 .about-card:hover::after {
     opacity: 1;
 }
 
-/**
- * Iconos de tarjeta
- * ---------------
- * Estilo y animación de los iconos dentro de las tarjetas
- */
 .card-icon {
     display: flex;
     justify-content: center;
@@ -185,7 +144,6 @@
     overflow: hidden;
 }
 
-/* Añade el efecto de gradiente radial */
 .card-icon::after {
     content: '';
     position: absolute;
@@ -198,12 +156,11 @@
     transition: opacity 0.3s ease;
 }
 
-/* Modifica los efectos hover */
 .about-card:hover .card-icon {
     transform: rotate(8deg) scale(1.1);
     background-color: rgba(var(--primary-color-rgb), 0.1);
     border-color: var(--primary-color);
-    animation: none; /* Quita la animación pulse anterior */
+    animation: none;
 }
 
 .about-card:hover .card-icon::after {
@@ -216,12 +173,6 @@
     100% { box-shadow: 0 0 0 0 rgba(var(--primary-color-rgb), 0); }
 }
 
-/**
- * Tipografía y contenido de tarjetas
- * ---------------------------------
- * Estilos para títulos, párrafos y elementos de texto
- */
-/* Títulos de tarjeta */
 .about-card h3 {
     position: relative;
     padding-bottom: 0.8rem;
@@ -232,7 +183,6 @@
     transition: color 0.5s ease;
 }
 
-/* Línea decorativa bajo títulos */
 .about-card h3:after {
     content: '';
     position: absolute;
@@ -251,7 +201,6 @@
     background-color: var(--primary-color);
 }
 
-/* Párrafos de texto */
 .about-card p {
     text-align: left;
     margin-bottom: 0.8rem;
@@ -261,7 +210,6 @@
     transition: color 0.5s ease;
 }
 
-/* Destacado de palabras clave */
 .about-card .highlight {
     color: var(--primary-color);
     font-weight: 500;
@@ -286,12 +234,6 @@
     height: 50%;
 }
 
-/**
- * Listas e ítems especiales
- * ------------------------
- * Estilos para listas y elementos específicos dentro de tarjetas
- */
-/* Lista de intereses */
 .interest-list {
     list-style-type: none;
     padding-left: 0.5rem;
@@ -325,7 +267,6 @@
     transform: scale(1.2);
 }
 
-/* Etiquetas de tecnologías */
 .tech-stack {
     display: flex;
     flex-wrap: wrap;
@@ -350,13 +291,7 @@
     transform: translateY(-2px);
 }
 
-/**
- * Responsividad
- * ------------
- * Ajustes para diferentes tamaños de pantalla
- */
 @media (max-width: 768px) {
-    /* Ajustes de contenedor */
     .about-container {
         padding: 3rem 1rem;
     }
@@ -365,13 +300,11 @@
         font-size: 2rem;
     }
     
-    /* Ajustes de distribución */
     .about-cards {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
     
-    /* Ajustes de elementos */
     .card-icon {
         width: 50px;
         height: 50px;

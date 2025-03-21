@@ -1,37 +1,16 @@
-/**
- * COMPONENTE ABOUT
- * 
- * Este componente muestra la sección "Sobre Mí" del portafolio.
- * Presenta información personal y profesional en un formato de tarjetas
- * con animaciones y efectos interactivos.
- * 
- * @author Diego Sáez
- * @version 1.1.0
- */
-
 import React, { useEffect, useRef } from 'react';
 import './About.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserTie, faEye, faBullseye, faHeart } from '@fortawesome/free-solid-svg-icons';
 
 function About() {
-    /**
-     * Referencias para elementos DOM
-     * Usadas para aplicar animaciones y observar la visibilidad
-     */
-    const sectionRef = useRef(null);    // Referencia a la sección completa
-    const cardsRef = useRef([]);        // Array de referencias a las tarjetas individuales
+    const sectionRef = useRef(null);    
+    const cardsRef = useRef([]);        
 
-    /**
-     * Configura el Intersection Observer para las animaciones
-     * Se ejecuta una vez al montar el componente
-     */
     useEffect(() => {
-        // Crea un observador que detecta cuando los elementos entran en el viewport
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach(entry => {
-                    // Cuando un elemento es visible, añade la clase para la animación
                     if (entry.isIntersecting) {
                         entry.target.classList.add('fade-in');
                     }
@@ -39,25 +18,22 @@ function About() {
             },
             { 
                 threshold: 0.2,
-                rootMargin: '0px 0px -50px 0px' // Triggers slightly before element becomes visible
+                rootMargin: '0px 0px -50px 0px' 
             }
         );
 
-        // Observa la sección principal
         if (sectionRef.current) {
             observer.observe(sectionRef.current);
         }
 
-        // Observa cada tarjeta con un retraso progresivo para efecto cascada
         cardsRef.current.forEach((card, index) => {
             if (card) {
                 setTimeout(() => {
                     observer.observe(card);
-                }, index * 200); // 200ms de retraso entre cada tarjeta
+                }, index * 200); 
             }
         });
 
-        // Limpieza al desmontar el componente
         return () => {
             observer.disconnect();
         };
@@ -68,7 +44,6 @@ function About() {
             <h2 className="section-title">Sobre Mí</h2>
             
             <div className="about-cards">
-                {}
                 <div 
                     className="about-card" 
                     ref={el => cardsRef.current[0] = el}
@@ -85,7 +60,6 @@ function About() {
                     </p>
                 </div>
                 
-                {}
                 <div 
                     className="about-card" 
                     ref={el => cardsRef.current[1] = el}
@@ -101,7 +75,6 @@ function About() {
                     </p>
                 </div>
                 
-                {}
                 <div 
                     className="about-card" 
                     ref={el => cardsRef.current[2] = el}
@@ -118,7 +91,6 @@ function About() {
                  
                 </div>
                 
-                {}
                 <div 
                     className="about-card" 
                     ref={el => cardsRef.current[3] = el}
