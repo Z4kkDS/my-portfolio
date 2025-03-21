@@ -26,10 +26,10 @@ function Projects() {
       id: 2,
       title: "Portfolio Personal",
       description: "Portfolio profesional desarrollado con React, mostrando mis proyectos, habilidades y experiencia. Diseño responsive con modo claro/oscuro y animaciones elegantes.",
-      image: `${process.env.PUBLIC_URL}/images/projects/Portfolio.jpeg`,
+      image: `${process.env.PUBLIC_URL}/images/projects/portfolio.jpeg`,
       technologies: ["React", "CSS", "JavaScript"],
-      demoUrl: "q",
-      codeUrl: "https://github.com/usuario/portfolio",
+      demoUrl: "https://my-portfolio-eight-rouge-43.vercel.app/#contact",
+      codeUrl: "https://github.com/Z4kkDS/my-portfolio",
       category: "frontend",
       featured: true
     },
