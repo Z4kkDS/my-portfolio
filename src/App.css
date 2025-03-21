@@ -1,0 +1,114 @@
+\src\App.css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Variables mejoradas para el tema claro */
+  --background-color: #F4F6F4;
+  --text-color: #1A1D1A;
+  --primary-color: #4A5447; /* Verde militar más oscuro para mejor contraste */
+  --secondary-color: #5B635A;
+  --card-background: #FFFFFF;
+  --shadow-color: rgba(74, 84, 71, 0.08); /* Sombra basada en primary-color */
+  --border-color: #E8EBE8;
+  --accent-color: #6B7A65; /* Acento verde más oscuro */
+  --text-contrast: #121512;
+  --link-hover: #3D463B; /* Color hover más oscuro */
+  --soft-gradient: linear-gradient(120deg, 
+    rgba(74, 84, 71, 0.95), 
+    rgba(107, 122, 101, 0.95)
+  );
+  --primary-color-rgb: 74, 84, 71;
+  --theme-transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  --theme-transition-duration: 1s;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  background-image: 
+    linear-gradient(120deg, 
+      rgba(74, 84, 71, 0.03) 0%,
+      rgba(107, 122, 101, 0.03) 100%
+    );
+  background-attachment: fixed;
+  transition: background-color var(--theme-transition-duration) var(--theme-transition-timing);
+}
+
+/* Añadir transición suave para el cambio de tema */
+body.theme-transition,
+body.theme-transition *:not([class*="hero"]) {
+  transition: background-color var(--theme-transition-duration) var(--theme-transition-timing),
+              color var(--theme-transition-duration) var(--theme-transition-timing),
+              border-color var(--theme-transition-duration) var(--theme-transition-timing),
+              box-shadow var(--theme-transition-duration) var(--theme-transition-timing),
+              transform 0.3s var(--theme-transition-timing) !important;
+}
+
+body.dark-mode {
+  --background-color: #161716;
+  --text-color: #ECECEC;
+  --primary-color: #778472; /* Verde militar más claro */
+  --secondary-color: #A0A0A0;
+  --card-background: #232423;
+  --shadow-color: rgba(0, 0, 0, 0.28);
+  --border-color: #303230;
+  --accent-color: #94A28C; /* Acento verde para modo oscuro */
+  --text-contrast: #F0F0F0;
+  --soft-gradient: linear-gradient(120deg, var(--primary-color), var(--accent-color));
+  --primary-color-rgb: 119, 132, 114; /* RGB del color primario para modo oscuro */
+  transition: all var(--theme-transition-duration) var(--theme-transition-timing);
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Asegura que la app llene al menos la altura de la ventana */
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color var(--theme-transition-duration) var(--theme-transition-timing);
+}
+
+main {
+  flex: 1; /* Hace que el contenido principal ocupe todo el espacio disponible */
+}
+
+section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 2rem 1rem;
+  }
+}
+
+/* Esto ayudará a que el footer siempre esté en la parte inferior */
+a {
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+/* Efecto para el header cuando se hace scroll */
+.header.scrolled {
+  padding: 0.7rem 2rem;
+  box-shadow: 0 3px 20px rgba(74, 84, 71, 0.1);
+  background-color: var(--card-background);
+  backdrop-filter: blur(10px) saturate(180%);
+}
+
+@media (max-width: 768px) {
+  .header.scrolled {
+    padding: 0.7rem 1rem;
+  }
+}

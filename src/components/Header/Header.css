@@ -1,0 +1,202 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--card-background);
+  box-shadow: 0 2px 15px var(--shadow-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.5s ease;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Added to ensure proper container for header content */
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Logo styling - updated to work with new Logo component */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo h2 {
+  margin: 0;
+  color: var(--text-contrast);
+  font-weight: 700;
+  transition: color 0.5s ease;
+  position: relative;
+  display: inline-block;
+}
+
+/* Añadir un pequeño acento debajo del logo */
+.logo h2::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 40%;
+  height: 3px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.logo h2:hover::after {
+  width: 100%;
+}
+
+/* Navigation list - standard display */
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin-left: 2rem;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: all 0.3s;
+  position: relative;
+  padding: 0.5rem 0.2rem;
+}
+
+/* Underline effect for navigation links */
+.nav-item a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+  transform: none;
+}
+
+.nav-item a:hover::after,
+.nav-item a.active::after {
+  width: 100%;
+}
+
+.nav-item a.active {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.nav-item a:hover {
+  color: var(--accent-color);
+}
+
+/* Mobile menu toggle button */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 100%;
+  height: 3px;
+  background-color: var(--primary-color);
+  transition: all 0.3s;
+  border-radius: 3px;
+}
+
+/* Hamburger menu animation */
+.menu-toggle.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+  
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--card-background);
+    padding: 1rem 0;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    transform: translateY(-150%);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 999;
+  }
+  
+  .nav.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .nav-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .nav-item {
+    margin: 1rem 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-item a {
+    display: block;
+    padding: 0.7rem 1rem;
+    width: 100%;
+  }
+  
+  .nav-item a:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+  }
+  
+  .nav.open .nav-item {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .nav.open .nav-item:nth-child(1) { transition-delay: 0.1s; }
+  .nav.open .nav-item:nth-child(2) { transition-delay: 0.2s; }
+  .nav.open .nav-item:nth-child(3) { transition-delay: 0.3s; }
+  .nav.open .nav-item:nth-child(4) { transition-delay: 0.4s; }
+  .nav.open .nav-item:nth-child(5) { transition-delay: 0.5s; }
+}

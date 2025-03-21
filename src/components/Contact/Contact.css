@@ -1,0 +1,270 @@
+.contact-container {
+    padding: 4rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.contact-container.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.contact-header h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    position: relative;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.contact-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.contact-header h2:hover::after {
+    width: 120px;
+}
+
+.contact-header p {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.social-links-container {
+    background-color: var(--card-background);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 15px 30px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-links-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(45deg, transparent 95%, rgba(var(--primary-color-rgb), 0.08) 95%),
+        linear-gradient(135deg, transparent 95%, rgba(var(--primary-color-rgb), 0.08) 95%);
+    background-size: 30px 30px;
+    opacity: 0.3;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.social-link {
+    text-decoration: none;
+    padding: 1.2rem;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    position: relative;
+    z-index: 1;
+}
+
+.social-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px var(--shadow-color);
+    border-color: rgba(var(--primary-color-rgb), 0.3);
+}
+
+.social-icon-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.social-icon-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(var(--primary-color-rgb), 0.08);
+    border: 1px solid rgba(var(--primary-color-rgb), 0.2);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-icon-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, var(--primary-color) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.social-link:hover .social-icon-container::after {
+    opacity: 0.15;
+}
+
+.social-icon-container i {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.social-link:hover .social-icon-container {
+    background-color: rgba(var(--primary-color-rgb), 0.15);
+    border-color: rgba(var(--primary-color-rgb), 0.4);
+    transform: scale(1.05) rotate(5deg);
+}
+
+.social-link:hover .social-icon-container i {
+    transform: scale(1.1);
+}
+
+.social-info {
+    flex: 1;
+}
+
+.social-name {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.3rem;
+}
+
+.social-description {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--secondary-color);
+    line-height: 1.4;
+}
+
+.contact-note {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem;
+    border-radius: 12px;
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+    border: 1px solid rgba(var(--primary-color-rgb), 0.1);
+}
+
+.location-icon {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    background-color: rgba(var(--primary-color-rgb), 0.08);
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(var(--primary-color-rgb), 0.2);
+    transition: all 0.3s ease;
+}
+
+.contact-note:hover .location-icon {
+    background-color: rgba(var(--primary-color-rgb), 0.15);
+    transform: scale(1.05);
+}
+
+.contact-note p {
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.availability {
+    margin-left: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* Clases para garantizar visibilidad */
+.visible-element {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 3rem 1rem;
+    }
+    
+    .contact-header h2 {
+        font-size: 2rem;
+    }
+    
+    .social-icon-container {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .social-icon-container i {
+        font-size: 1.5rem;
+    }
+    
+    .social-name {
+        font-size: 1.1rem;
+    }
+    
+    .social-description {
+        font-size: 0.9rem;
+    }
+    
+    .contact-note {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+}
+
+/* Variables de colores actualizadas para la paleta verde militar */
+:root {
+    --hover-color: rgba(var(--primary-color-rgb), 0.15);
+    --primary-color-rgb: 85, 96, 82; /* #556052 en RGB */
+}
+
+[data-theme='dark'] {
+    --hover-color: rgba(var(--primary-color-rgb), 0.25);
+}

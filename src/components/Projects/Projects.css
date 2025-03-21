@@ -1,0 +1,525 @@
+/**
+ * PROJECTS SECTION STYLES
+ * 
+ * Estilos para la sección de proyectos del portafolio.
+ * Diseñada para mantener coherencia con la paleta verde militar muted
+ * y los patrones de diseño establecidos en el resto del sitio.
+ */
+
+/**
+ * Contenedor principal y animación de entrada
+ * ------------------------------------------
+ */
+ .projects-container {
+    padding: 5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+    position: relative;
+}
+
+.projects-container.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.projects-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+    opacity: 0.6;
+}
+
+/**
+ * Título de sección
+ * ----------------
+ */
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3.5rem; /* Aumentado de 3rem a 3.5rem */
+    color: var(--primary-color);
+    position: relative;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    transition: color 0.5s ease;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    bottom: -15px; /* Aumentado de -10px a -15px */
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.section-title:hover::after {
+    width: 140px;
+}
+
+/**
+ * Sistema de filtrado
+ * ------------------
+ */
+.projects-filter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+    padding: 0.5rem;
+    margin-top: 1.5rem; /* Añadido para crear más espacio desde el título */
+}
+
+.filter-btn {
+    padding: 0.7rem 1.6rem;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: var(--card-background);
+    color: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    letter-spacing: 0.3px;
+    box-shadow: 0 3px 10px var(--shadow-color);
+}
+
+/* Destacar el botón de favoritos */
+.filter-btn[aria-label="Filtrar por destacados"] {
+    border-color: rgba(var(--primary-color-rgb), 0.3);
+}
+
+.filter-icon {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover .filter-icon {
+    transform: translateY(-2px) rotate(10deg);
+}
+
+.filter-btn.active .filter-icon {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.filter-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 8px 20px rgba(var(--primary-color-rgb), 0.2);
+}
+
+.projects-count {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 2.5rem;
+    font-size: 0.95rem;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.no-projects {
+    text-align: center;
+    padding: 3rem;
+    color: var(--secondary-color);
+    background-color: var(--card-background);
+    border-radius: 12px;
+    margin: 2rem 0;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 30px var(--shadow-color);
+}
+
+/**
+ * Grid de proyectos
+ * ---------------
+ */
+.projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    margin-top: 2rem;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.projects-grid.filter-changing {
+    opacity: 0.5;
+    transform: translateY(10px);
+}
+
+/**
+ * Tarjeta de proyecto
+ * -----------------
+ */
+.project-card {
+    background-color: var(--card-background);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    opacity: 0;
+    transform: translateY(20px);
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    min-height: 260px;
+    position: relative;
+    border: 1px solid var(--border-color);
+}
+
+/* Mejora del efecto de borde en hover */
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    border: 2px solid transparent;
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    pointer-events: none;
+    z-index: 4;
+    box-shadow: 0 0 0 0 rgba(var(--primary-color-rgb), 0);
+}
+
+.project-card:hover::before {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(var(--primary-color-rgb), 0.2);
+}
+
+@media (max-width: 768px) {
+    .project-card {
+        grid-template-columns: 1fr;
+        grid-template-rows: 220px auto;
+    }
+}
+
+.project-card.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Añadir un ligero efecto de brillo al hacer hover sobre la tarjeta */
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px var(--shadow-color), 
+                0 0 20px rgba(var(--primary-color-rgb), 0.1);
+}
+
+/* Estilo refinado para proyecto destacado - MODIFICADO */
+.project-card.featured {
+    position: relative;
+    /* Se elimina la línea: border-left: 3px solid var(--primary-color); */
+}
+
+/* Estrella coherente con el diseño del sitio - mejorada para modo claro */
+.project-card.featured::after {
+    content: '★';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.9rem;
+    color: #fff; /* Cambiado para asegurar visibilidad en modo claro */
+    background-color: var(--primary-color);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgba(var(--primary-color-rgb), 0.3);
+    transition: all 0.3s ease;
+    z-index: 5;
+    border: 2px solid transparent; /* Añadido para el efecto hover */
+}
+
+.project-card.featured:hover::after {
+    transform: translateY(-3px) rotate(15deg);
+    box-shadow: 0 5px 15px rgba(var(--primary-color-rgb), 0.5);
+    background-color: var(--accent-color, #A3B18A); /* Cambia a color de acento */
+    border-color: var(--primary-color); /* Añade borde para más definición */
+}
+
+/**
+ * Contenedor de imagen
+ * ------------------
+ */
+.project-image-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px 0 0 16px;
+    min-height: 240px;
+    background-color: var(--card-background);
+    border-right: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+    .project-image-container {
+        border-radius: 16px 16px 0 0;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.03);
+    filter: brightness(1.05);
+}
+
+/**
+ * Contenido del proyecto
+ * --------------------
+ */
+.project-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    position: relative;
+    padding-bottom: 0.8rem;
+    transition: color 0.3s ease;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.project-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+    opacity: 0.8; /* Añadido para hacerlo más visible en modo claro */
+    transition: width 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.project-card:hover .project-title::after {
+    width: 100px;
+    opacity: 1; /* Aumenta la opacidad en hover */
+    background-color: var(--accent-color, #A3B18A); /* Cambia a color de acento para más contraste */
+}
+
+.project-description {
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    flex-grow: 1;
+    font-size: 1.05rem;
+}
+
+/**
+ * Badges de tecnologías
+ * -------------------
+ */
+.tech-badges-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.8rem;
+    margin-bottom: 1.2rem;
+}
+
+.tech-badge {
+    font-size: 0.8rem;
+    background-color: rgba(var(--primary-color-rgb), 0.12); /* Ligeramente más oscuro */
+    color: var(--primary-color);
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(var(--primary-color-rgb), 0.2); /* Borde visible */
+    font-weight: 500;
+}
+
+.tech-badge:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(var(--primary-color-rgb), 0.3);
+    border-color: transparent;
+}
+
+.tech-badge i {
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.tech-badge:hover i {
+    transform: scale(1.2);
+}
+
+/**
+ * Enlaces del proyecto
+ * -----------------
+ */
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.project-link {
+    padding: 0.7rem 1.4rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 0 3px 10px var(--shadow-color);
+}
+
+.demo-link {
+    background-color: var(--primary-color);
+    color: white;
+    border: 2px solid var(--primary-color);
+}
+
+.code-link {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    background-color: transparent;
+}
+
+.demo-link:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(var(--primary-color-rgb), 0.3);
+}
+
+.code-link:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(var(--primary-color-rgb), 0.2);
+}
+
+.project-link i {
+    transition: transform 0.3s ease;
+}
+
+.project-link:hover i {
+    transform: translateY(-2px);
+}
+
+.demo-link:hover i.fa-external-link-alt {
+    transform: translate(3px, -3px);
+}
+
+.code-link:hover i.fa-github {
+    transform: rotate(15deg) scale(1.2);
+}
+
+/**
+ * Responsividad
+ * -----------
+ */
+@media (max-width: 768px) {
+    .projects-container {
+        padding: 4rem 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .projects-filter {
+        gap: 0.8rem;
+    }
+    
+    .filter-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.95rem;
+    }
+    
+    .project-content {
+        padding: 1.5rem;
+    }
+    
+    .project-title {
+        font-size: 1.5rem;
+    }
+    
+    .project-description {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+}
+
+/* Para dispositivos muy pequeños */
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .projects-container {
+        padding: 3.5rem 1rem;
+    }
+    
+    .tech-badges-container {
+        gap: 0.4rem;
+    }
+    
+    .tech-badge {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.5rem;
+    }
+    
+    .project-links {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .project-link {
+        width: 100%;
+        padding: 0.8rem;
+    }
+}

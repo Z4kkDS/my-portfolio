@@ -1,0 +1,393 @@
+/**
+ * ABOUT SECTION STYLES
+ * 
+ * Este archivo contiene los estilos para el componente About del portafolio.
+ * Organizado en secciones lógicas para facilitar el mantenimiento.
+ */
+
+/**
+ * Contenedor principal y animación de entrada
+ * ------------------------------------------
+ * Maneja el diseño general de la sección y las animaciones de carga
+ */
+ .about-container {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.about-container.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/**
+ * Título de sección
+ * ----------------
+ * Estilos para el encabezado principal con línea decorativa
+ */
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3.5rem; /* Aumentado de 3rem a 3.5rem para más espacio */
+    color: var(--primary-color);
+    position: relative;
+    transition: color 0.5s ease;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 4px;
+    background-color: var(--primary-color);
+    bottom: -15px; /* Aumentado de -10px a -15px para bajar el decorador */
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    transition: background-color 0.5s ease, width 0.3s ease;
+}
+
+.section-title:hover::after {
+    width: 150px;
+}
+
+/**
+ * Distribución de tarjetas
+ * -----------------------
+ * Sistema de grid para organizar las tarjetas About
+ */
+.about-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.75rem;
+    margin-top: 1.5rem; /* Añadido para aumentar el espacio entre título y tarjetas */
+    margin-bottom: 3rem;
+    padding: 0.5rem;
+}
+
+@media (min-width: 992px) {
+    .about-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/**
+ * Estructura base de tarjetas
+ * --------------------------
+ * Diseño y estructura fundamental de cada tarjeta
+ */
+.about-card {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    border-radius: 12px;
+    background-color: var(--card-background);
+    padding: 1.75rem 1.5rem;
+    box-shadow: 0 8px 20px var(--shadow-color);
+    transition: all 0.5s ease;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+.about-card.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Variantes sutiles para alternar tarjetas */
+.about-card:nth-child(even) {
+    background-color: var(--card-background);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.about-card:nth-child(odd) {
+    background-color: var(--card-background);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/**
+ * Efectos interactivos de tarjetas
+ * -------------------------------
+ * Animaciones y efectos visuales al interactuar con las tarjetas
+ */
+.about-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px var(--shadow-color);
+    border-color: var(--primary-color);
+}
+
+/* Efecto de borde superior con gradiente */
+.about-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--primary-color) 50%, transparent);
+    border-radius: 4px 4px 0 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Efecto de brillo radial interno */
+.about-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(var(--primary-color-rgb), 0.05) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+}
+
+/* Activar efectos al hover */
+.about-card:hover:before,
+.about-card:hover::after {
+    opacity: 1;
+}
+
+/**
+ * Iconos de tarjeta
+ * ---------------
+ * Estilo y animación de los iconos dentro de las tarjetas
+ */
+.card-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 1.25rem;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    width: 55px;
+    height: 55px;
+    border-radius: 14px;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Añade el efecto de gradiente radial */
+.card-icon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, var(--primary-color) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Modifica los efectos hover */
+.about-card:hover .card-icon {
+    transform: rotate(8deg) scale(1.1);
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    border-color: var(--primary-color);
+    animation: none; /* Quita la animación pulse anterior */
+}
+
+.about-card:hover .card-icon::after {
+    opacity: 0.2;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(var(--primary-color-rgb), 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(var(--primary-color-rgb), 0); }
+    100% { box-shadow: 0 0 0 0 rgba(var(--primary-color-rgb), 0); }
+}
+
+/**
+ * Tipografía y contenido de tarjetas
+ * ---------------------------------
+ * Estilos para títulos, párrafos y elementos de texto
+ */
+/* Títulos de tarjeta */
+.about-card h3 {
+    position: relative;
+    padding-bottom: 0.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 600;
+    color: var(--text-color);
+    transition: color 0.5s ease;
+}
+
+/* Línea decorativa bajo títulos */
+.about-card h3:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+    transform: translateX(-50%);
+    border-radius: 2px;
+    transition: all 0.5s ease;
+}
+
+.about-card:hover h3:after {
+    width: 70px;
+    background-color: var(--primary-color);
+}
+
+/* Párrafos de texto */
+.about-card p {
+    text-align: left;
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+    flex-grow: 1;
+    color: var(--secondary-color);
+    transition: color 0.5s ease;
+}
+
+/* Destacado de palabras clave */
+.about-card .highlight {
+    color: var(--primary-color);
+    font-weight: 500;
+    transition: color 0.5s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.about-card .highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: rgba(var(--primary-color-rgb), 0.15);
+    transition: height 0.3s ease;
+    z-index: -1;
+}
+
+.about-card:hover .highlight::after {
+    height: 50%;
+}
+
+/**
+ * Listas e ítems especiales
+ * ------------------------
+ * Estilos para listas y elementos específicos dentro de tarjetas
+ */
+/* Lista de intereses */
+.interest-list {
+    list-style-type: none;
+    padding-left: 0.5rem;
+    text-align: left;
+    margin-top: 0.3rem;
+}
+
+.interest-list li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.4rem;
+    color: var(--secondary-color);
+    transition: transform 0.3s ease;
+}
+
+.interest-list li:before {
+    content: '•';
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.interest-list li:hover {
+    transform: translateX(5px);
+    color: var(--text-color);
+}
+
+.interest-list li:hover:before {
+    transform: scale(1.2);
+}
+
+/* Etiquetas de tecnologías */
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.8rem;
+    justify-content: flex-start;
+}
+
+.tech-tag {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    color: var(--primary-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/**
+ * Responsividad
+ * ------------
+ * Ajustes para diferentes tamaños de pantalla
+ */
+@media (max-width: 768px) {
+    /* Ajustes de contenedor */
+    .about-container {
+        padding: 3rem 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    /* Ajustes de distribución */
+    .about-cards {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    /* Ajustes de elementos */
+    .card-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .about-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .about-card p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+    
+    .tech-tag {
+        font-size: 0.8rem;
+    }
+}
