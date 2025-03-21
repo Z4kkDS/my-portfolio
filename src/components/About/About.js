@@ -68,10 +68,7 @@ function About() {
             <h2 className="section-title">Sobre Mí</h2>
             
             <div className="about-cards">
-                {/* 
-                 * TARJETA: PERFIL PROFESIONAL
-                 * Muestra información sobre formación académica y enfoque profesional
-                 */}
+                {}
                 <div 
                     className="about-card" 
                     ref={el => cardsRef.current[0] = el}
@@ -88,10 +85,7 @@ function About() {
                     </p>
                 </div>
                 
-                {/* 
-                 * TARJETA: VISIÓN INTEGRAL
-                 * Destaca la experiencia complementaria y visión de negocio
-                 */}
+                {}
                 <div 
                     className="about-card" 
                     ref={el => cardsRef.current[1] = el}
@@ -107,10 +101,7 @@ function About() {
                     </p>
                 </div>
                 
-                {/* 
-                 * TARJETA: ENFOQUE
-                 * Describe la filosofía de trabajo y habilidades técnicas
-                 */}
+                {}
                 <div 
                     className="about-card" 
                     ref={el => cardsRef.current[2] = el}
@@ -127,10 +118,7 @@ function About() {
                  
                 </div>
                 
-                {/* 
-                 * TARJETA: INTERESES PERSONALES
-                 * Muestra hobbies y actividades fuera del ámbito profesional
-                 */}
+                {}
                 <div 
                     className="about-card" 
                     ref={el => cardsRef.current[3] = el}
@@ -142,8 +130,8 @@ function About() {
                     <p>Fuera del mundo de la programación, disfruto de:</p>
                     <ul className="interest-list">
                         <li>Videojuegos</li>
-                        <li>Lectura de ciencia ficción</li>
-                        <li>Largas caminatas en la naturaleza</li>
+                        <li>Peliculas y series</li>
+                        <li>Disfrutar de la musica</li>
                     </ul>
                 </div>
             </div>
